@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Order Received | AMORA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: '#D4AF37',
+            dark: '#1A1A1A',
+            cream: '#F9F7F2'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-cream text-dark font-sans">
+
+  <div class="min-h-screen flex items-center justify-center text-center px-6">
+    <div>
+      <h1 class="font-serif text-4xl mb-4">Thank You</h1>
+      <p class="mb-6">
+        Your order has been received.<br>
+        We will verify the payment and update you via email shortly.
+      </p>
+
+      <a href="index.html"
+         class="px-6 py-3 border border-gold text-gold hover:bg-gold hover:text-white transition">
+        Back to Home
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>

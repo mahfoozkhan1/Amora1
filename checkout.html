@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Checkout | AMORA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: '#D4AF37',
+            dark: '#1A1A1A',
+            cream: '#F9F7F2'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-cream text-dark font-sans">
+
+  <div class="max-w-2xl mx-auto px-6 py-12">
+    <h1 class="font-serif text-3xl mb-6 text-center">Checkout</h1>
+
+    <div class="text-center mb-8">
+      <p class="mb-4">Pay via UPI</p>
+      <img src="assets/upi-qr.png" class="mx-auto w-48 mb-2">
+      <p class="text-sm">UPI ID: <strong>amora@upi</strong></p>
+    </div>
+
+    <form id="orderForm" class="space-y-4" enctype="multipart/form-data">
+
+      <input type="email" id="email" placeholder="Email address" required
+        class="w-full p-3 border">
+
+      <textarea id="address" placeholder="Full delivery address" required
+        class="w-full p-3 border"></textarea>
+
+      <label class="block">
+        Upload payment screenshot:
+        <input type="file" name="screenshot" accept="image/*" required class="mt-2">
+      </label>
+
+      <button type="submit"
+        class="w-full mt-6 py-3 border border-gold text-gold hover:bg-gold hover:text-white transition">
+        Place Order
+      </button>
+
+    </form>
+  </div>
+
+  <script src="js/checkout.js"></script>
+
+</body>
+</html>

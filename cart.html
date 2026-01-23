@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Cart | AMORA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fonts (same as main site) -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: '#D4AF37',
+            dark: '#1A1A1A',
+            cream: '#F9F7F2'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-cream text-dark font-sans">
+
+  <div class="max-w-3xl mx-auto px-6 py-12">
+    <h1 class="font-serif text-3xl mb-8 text-center">Your Cart</h1>
+
+    <div id="cartItems" class="space-y-4"></div>
+
+    <div class="mt-8 flex justify-between items-center">
+      <p class="text-xl">
+        Total: ₹<span id="totalAmount">0</span>
+      </p>
+
+      <a href="checkout.html"
+         class="px-6 py-3 border border-gold text-gold hover:bg-gold hover:text-white transition">
+        Proceed to Checkout
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const cartDiv = document.getElementById("cartItems");
+    const totalSpan = document.getElementById("totalAmount");
+
+    let total = 0;
+
+    if (cart.length === 0) {
+      cartDiv.innerHTML = "<p>Your cart is empty.</p>";
+    } else {
+      cart.forEach((item, index) => {
+        total += item.price;
+        cartDiv.innerHTML += `
+          <div class="flex justify-between border-b pb-2">
+            <span>${item.name}</span>
+            <span>₹${item.price}</span>
+          </div>
+        `;
+      });
+    }
+
+    totalSpan.textContent = total;
+  </script>
+
+</body>
+</html>
