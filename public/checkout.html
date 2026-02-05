@@ -1,61 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Checkout | AMORA</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Lato:wght@300;400&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            gold: '#D4AF37',
-            dark: '#1A1A1A',
-            cream: '#F9F7F2'
-          }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | AMORA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: { extend: { colors: { amora: { gold: '#D4AF37', dark: '#1A1A1A', cream: '#F9F7F2' } } } }
         }
-      }
-    }
-  </script>
+    </script>
 </head>
+<body class="bg-amora-cream min-h-screen flex items-center justify-center p-4">
 
-<body class="bg-cream text-dark font-sans">
+    <div class="bg-white w-full max-w-md p-8 rounded-2xl shadow-2xl relative overflow-hidden">
+        
+        <div id="checkout-form-container">
+            <h2 class="font-serif text-2xl font-bold mb-6 text-center text-amora-dark">Shipping Details</h2>
+            <form id="orderForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-bold mb-1">Full Name</label>
+                    <input type="text" id="name" required class="w-full bg-gray-50 border border-gray-200 rounded-lg p-3 focus:outline-none focus:border-amora-gold">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold mb-1">Phone Number</label>
+                    <input type="tel" id="phone" required class="w-full bg-gray-50 border border-gray-200 rounded-lg p-3 focus:outline-none focus:border-amora-gold">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold mb-1">Shipping Address</label>
+                    <textarea id="address" rows="3" required class="w-full bg-gray-50 border border-gray-200 rounded-lg p-3 focus:outline-none focus:border-amora-gold"></textarea>
+                </div>
+                
+                <div class="pt-4">
+                    <p class="text-right text-sm text-gray-500 mb-2">Total Amount: <span id="checkout-total" class="font-bold text-amora-dark text-lg">₹0</span></p>
+                    <button type="submit" class="w-full bg-amora-gold text-amora-dark font-bold py-3 rounded-lg hover:brightness-110 transition-all">
+                        Pay Now
+                    </button>
+                </div>
+            </form>
+        </div>
 
-  <div class="max-w-2xl mx-auto px-6 py-12">
-    <h1 class="font-serif text-3xl mb-6 text-center">Checkout</h1>
+        <div id="payment-section" class="hidden text-center">
+            <h2 class="font-serif text-2xl font-bold mb-4 text-amora-dark">Scan to Pay</h2>
+            <p class="text-gray-600 mb-6">Complete your payment of <span id="qr-amount" class="font-bold text-amora-gold text-xl"></span></p>
+            
+            <div class="bg-white p-4 border-2 border-amora-gold rounded-xl inline-block mx-auto mb-6">
+                <img id="upi-qr" src="" alt="Payment QR" class="w-48 h-48">
+            </div>
+            
+            <p class="text-xs text-gray-400">Linked to AMORA Account</p>
+            <a href="success.html" class="block w-full bg-green-500 text-white font-bold py-3 mt-6 rounded-lg hover:bg-green-600 transition-all">
+                I have made the payment
+            </a>
+        </div>
 
-    <div class="text-center mb-8">
-      <p class="mb-4">Pay via UPI</p>
-      <img src="assets/upi-qr.png" class="mx-auto w-48 mb-2">
-      <p class="text-sm">UPI ID: <strong>amora@upi</strong></p>
     </div>
 
-    <form id="orderForm" class="space-y-4" enctype="multipart/form-data">
-
-      <input type="email" id="email" placeholder="Email address" required
-        class="w-full p-3 border">
-
-      <textarea id="address" placeholder="Full delivery address" required
-        class="w-full p-3 border"></textarea>
-
-      <label class="block">
-        Upload payment screenshot:
-        <input type="file" name="screenshot" accept="image/*" required class="mt-2">
-      </label>
-
-      <button type="submit"
-        class="w-full mt-6 py-3 border border-gold text-gold hover:bg-gold hover:text-white transition">
-        Place Order
-      </button>
-
-    </form>
-  </div>
-
-  <script src="js/checkout.js"></script>
-
+    <script src="js/checkout.js"></script>
 </body>
 </html>
