@@ -1,72 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Your Cart | AMORA</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Fonts (same as main site) -->
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Lato:wght@300;400&display=swap" rel="stylesheet">
-
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            gold: '#D4AF37',
-            dark: '#1A1A1A',
-            cream: '#F9F7F2'
-          }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart | AMORA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: { extend: { colors: { amora: { gold: '#D4AF37', dark: '#1A1A1A', cream: '#F9F7F2' } } } }
         }
-      }
-    }
-  </script>
+    </script>
 </head>
+<body class="bg-amora-cream text-amora-dark">
 
-<body class="bg-cream text-dark font-sans">
+    <div class="max-w-2xl mx-auto px-4 py-8">
+        <h1 class="font-serif text-3xl font-bold mb-6 text-center">Shopping Cart</h1>
 
-  <div class="max-w-3xl mx-auto px-6 py-12">
-    <h1 class="font-serif text-3xl mb-8 text-center">Your Cart</h1>
+        <div id="cart-items" class="space-y-4 min-h-[200px]"></div>
 
-    <div id="cartItems" class="space-y-4"></div>
-
-    <div class="mt-8 flex justify-between items-center">
-      <p class="text-xl">
-        Total: ₹<span id="totalAmount">0</span>
-      </p>
-
-      <a href="checkout.html"
-         class="px-6 py-3 border border-gold text-gold hover:bg-gold hover:text-white transition">
-        Proceed to Checkout
-      </a>
+        <div id="cart-summary" class="mt-8 bg-white p-6 rounded-xl shadow-lg">
+            <div class="flex justify-between mb-2">
+                <span>Subtotal</span>
+                <span id="subtotal" class="font-bold">₹0</span>
+            </div>
+            <div class="flex justify-between mb-4 text-sm text-gray-600">
+                <span>Delivery Charge</span>
+                <span id="delivery">₹50</span>
+            </div>
+            <div class="border-t border-gray-200 pt-4 flex justify-between text-xl font-serif font-bold text-amora-gold">
+                <span>Total Pay</span>
+                <span id="total">₹0</span>
+            </div>
+            
+            <a href="checkout.html" class="block w-full bg-amora-dark text-amora-gold text-center py-3 mt-6 rounded-lg font-bold hover:bg-black transition-all">
+                Proceed to Checkout
+            </a>
+        </div>
+        
+        <a href="index.html" class="block text-center mt-6 text-gray-500 hover:text-amora-dark">← Continue Shopping</a>
     </div>
-  </div>
 
-  <script>
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const cartDiv = document.getElementById("cartItems");
-    const totalSpan = document.getElementById("totalAmount");
-
-    let total = 0;
-
-    if (cart.length === 0) {
-      cartDiv.innerHTML = "<p>Your cart is empty.</p>";
-    } else {
-      cart.forEach((item, index) => {
-        total += item.price;
-        cartDiv.innerHTML += `
-          <div class="flex justify-between border-b pb-2">
-            <span>${item.name}</span>
-            <span>₹${item.price}</span>
-          </div>
-        `;
-      });
-    }
-
-    totalSpan.textContent = total;
-  </script>
-
+    <script src="js/cart.js"></script>
 </body>
 </html>
