@@ -79,6 +79,11 @@ function loadCartItems() {
     const deliveryCharge = 50;
     const finalAmount = subtotal + deliveryCharge;
 
+    // --- THIS WAS MISSING ---
+    // Save the final amount so checkout.html can read it
+    localStorage.setItem("finalAmount", finalAmount);
+    // ------------------------
+
     if (document.getElementById("subtotal")) {
         document.getElementById("subtotal").innerText = `₹${subtotal}`;
         document.getElementById("delivery").innerText = `₹${deliveryCharge}`;
